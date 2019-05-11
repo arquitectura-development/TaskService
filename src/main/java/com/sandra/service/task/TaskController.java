@@ -17,16 +17,16 @@ public class TaskController {
 
     @RequestMapping("/")
     public @ResponseBody String usage() {
-        return "Provides Following CRUD Operations...";
+        return "Provides Following CRUD Operations for Tasks";
     }
 
-    @GetMapping(path = "/tasks")
+    @GetMapping(path = "/admin/tasks")
     public @ResponseBody Iterable<Task> getAllTasks() {
         //ADMIN endpoint to get all tasks
         return repository.findAll();
     }
 
-    @PostMapping(path = "/tasks/user")
+    @PostMapping(path = "/users/tasks")
     public @ResponseBody Task createTask(
             @RequestParam("userId") Integer userId,
             @RequestBody Task task){
@@ -34,7 +34,7 @@ public class TaskController {
         return  repository.save(task);
     }
 
-    @GetMapping(path = "/tasks/user")
+    @GetMapping(path = "/users/tasks")
     public @ResponseBody List<Task> getTasksForUser( @RequestParam("userId") Integer userId){
         //Task t= repository.findByUser(userId);
        List<Task> tasks=  repository.findByUserId(userId);
@@ -44,7 +44,7 @@ public class TaskController {
        return tasks;
     }
 
-    @GetMapping(path = "/tasks/user/{taskId}")
+    @GetMapping(path = "/users/tasks/{taskId}")
     public @ResponseBody Task getTaskForUser(@PathVariable Integer taskId,  @RequestParam("userId") Integer userId){
 
         Task t= repository.findByIdAndUserId(taskId,userId );
@@ -55,7 +55,7 @@ public class TaskController {
         return t;
     }
 
-    @DeleteMapping(path = "/tasks/user/{taskId}")
+    @DeleteMapping(path = "/users/tasks/{taskId}")
     public @ResponseBody Task deleteTaskForUser(@PathVariable Integer taskId,  @RequestParam("userId") Integer userId){
         Task t= repository.findByIdAndUserId(taskId,userId );
         if(t==null){
@@ -65,7 +65,7 @@ public class TaskController {
         return t;
     }
 
-    @PutMapping(path = "/tasks/user/{taskId}")
+    @PutMapping(path = "/users/tasks/{taskId}")
     public Task updateTaskForUser(@PathVariable Integer taskId,
                                   @RequestParam("userId") Integer userId,
                                   @RequestBody Task task){
