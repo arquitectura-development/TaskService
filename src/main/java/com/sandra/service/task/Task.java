@@ -15,10 +15,9 @@ public class Task {
     private String title;
     private String description;
     private String difficulty;
-
     private String dueDate;
     private String reminder;
-
+    private Boolean done;
 
     public Integer getId() {
         return id;
@@ -76,4 +75,11 @@ public class Task {
         this.reminder = reminder;
     }
 
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
 }

@@ -80,6 +80,7 @@ public class TaskController {
         t.setDueDate(task.getDueDate());
         t.setReminder(task.getReminder());
         t.setTitle(task.getTitle());
+        t.setDone(task.getDone());
         repository.save(t);
         return t;
     }
