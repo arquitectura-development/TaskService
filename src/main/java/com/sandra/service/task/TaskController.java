@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.FormParam;
-import javax.ws.rs.Produces;
-import java.lang.annotation.ElementType;
 import java.util.List;
 
 @RestController
@@ -36,7 +33,6 @@ public class TaskController {
 
     @GetMapping(path = "/users/tasks")
     public @ResponseBody List<Task> getTasksForUser( @RequestParam("userId") Integer userId){
-        //Task t= repository.findByUser(userId);
        List<Task> tasks=  repository.findByUserId(userId);
        if(tasks.isEmpty()){
            throw new UserNotFoundException();
@@ -51,7 +47,6 @@ public class TaskController {
         if(t==null){
             throw new TaskNotFoundException();
         }
-               // "Get specific user task {"+taskId+"}";
         return t;
     }
 
@@ -81,6 +76,7 @@ public class TaskController {
         t.setReminder(task.getReminder());
         t.setTitle(task.getTitle());
         t.setDone(task.getDone());
+        t.setCompletionDate(task.getCompletionDate());
         repository.save(t);
         return t;
     }

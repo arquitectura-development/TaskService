@@ -18,6 +18,8 @@ public class Task {
     private String dueDate;
     private String reminder;
     private Boolean done;
+    private String completionDate;
+
 
     public Integer getId() {
         return id;
@@ -81,5 +83,14 @@ public class Task {
 
     public void setDone(Boolean done) {
         this.done = done;
+    }
+
+
+    public String getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(String completionDate) {
+        this.completionDate = completionDate;
     }
 }
