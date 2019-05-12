@@ -19,7 +19,6 @@ public class TaskController {
 
     @GetMapping(path = "/admin/tasks")
     public @ResponseBody Iterable<Task> getAllTasks() {
-        //ADMIN endpoint to get all tasks
         return repository.findAll();
     }
 
