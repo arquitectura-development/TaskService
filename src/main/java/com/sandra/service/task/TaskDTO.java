@@ -1,17 +1,8 @@
 package com.sandra.service.task;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-public class Task {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-    private Integer userId;
+public class TaskDTO implements Serializable {
     private String title;
     private String description;
     private String dueDate;
@@ -19,36 +10,6 @@ public class Task {
     private Boolean done;
     private String completionDate;
 
-    public Task(){
-
-    }
-
-   public Task( String title, String description,  String dueDate,
-               String reminder, Boolean done, String completionDate){
-        this.title=title;
-        this.description=description;
-        this.dueDate=dueDate;
-        this.reminder=reminder;
-        this.done=done;
-        this.completionDate=completionDate;
-   }
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getTitle() {
         return title;
@@ -65,7 +26,6 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
     public String getDueDate() {
         return dueDate;
@@ -90,7 +50,6 @@ public class Task {
     public void setDone(Boolean done) {
         this.done = done;
     }
-
 
     public String getCompletionDate() {
         return completionDate;
